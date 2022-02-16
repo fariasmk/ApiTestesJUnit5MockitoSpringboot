@@ -1,7 +1,7 @@
 package com.maikon.api.services.impl;
 
 import com.maikon.api.domain.User;
-import com.maikon.api.dto.UserDTO;
+import com.maikon.api.domain.dto.UserDTO;
 import com.maikon.api.repositories.UserRepository;
 import com.maikon.api.services.UserService;
 import com.maikon.api.services.exceptions.DataIntegratyViolationException;
@@ -34,12 +34,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(UserDTO obj) {
+        findByEmail(obj);
         return repository.save(mapper.map(obj, User.class));
+    }
+
+    @Override
+    public User update(UserDTO obj) {
+        findByEmail(obj);
+        return repository.save(mapper.map(obj, User.class));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        findById(id);
+        repository.deleteById(id);
     }
 
     private void findByEmail(UserDTO obj) {
         Optional<User> user = repository.findByEmail(obj.getEmail());
-        if(user.isPresent()) {
+        if(user.isPresent() && !user.get().getId().equals(obj.getId())) {
             throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
         }
     }

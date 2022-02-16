@@ -1,7 +1,9 @@
 package com.maikon.api.resources.exceptions;
 
+
 import com.maikon.api.services.exceptions.DataIntegratyViolationException;
 import com.maikon.api.services.exceptions.ObjectNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
