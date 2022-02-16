@@ -27,8 +27,8 @@ class UserResourceTest {
 
     private static final Integer ID      = 1;
     private static final Integer INDEX   = 0;
-    private static final String NAME     = "Valdir";
-    private static final String EMAIL    = "valdir@mail.com";
+    private static final String NAME     = "Maikon";
+    private static final String EMAIL    = "maikon@email.com";
     private static final String PASSWORD = "123";
 
     private User user = new User();
